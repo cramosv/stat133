@@ -1,0 +1,5 @@
+name = "Carlos Ramos de la Vega"
+SID= "24426442"
+email = "cramosv@berkeley.edu"
+github_name = "cramosv"
+status = "enrolled"
