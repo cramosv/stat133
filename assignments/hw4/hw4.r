@@ -13,9 +13,12 @@
 # <element.lengths>: a numeric vector whose entries are the lengths of each
 #   element of <data.list>
 
-listLengths <- function(data.list) {
 
-    # your code here
+listLengths <- function(data.list) {
+  
+  
+  element.lengths=sapply(data.list,FUN=length)
+    return (element.lengths) 
 
 }
 
@@ -27,19 +30,17 @@ listLengths <- function(data.list) {
 # <k> : an integer
 
 # Output variable
-# <x.powers> : A matrix of size [n x k] where the first column is x, the second column x^2, the third column x^4, etc.
-#              the column names should be : "x", "x^2", "x^3" etc.
-
-powers <- function(x, k){
-
+powers=function(x,k) {x.powers=outer(x,seq(from=1, to=k),"^")
+colnames(x.powers)=c("x",paste("x^",seq(from=2, to=k), sep=""))
+return(x.powers)
 }
 
- 
 #### Function #3
 #### Implement the function "recipeConversion"
 
 # Input variable:
 # <recipe> : A data frame with three columns named "amount", "unit" and "ingredient"
+
 
 # Output variable:
 # <recipe.metric> : A data frame with three columns where cups have been converted to ml and ounces to grams.
@@ -63,10 +64,27 @@ powers <- function(x, k){
 # function should stop and print out an error message
 
 # Put your code here
-recipeConversion <- function(recipe){
+recipeConversion <- 
 
-}
-
+  function(recipe.metrics)
+  {
+    recipe$unit = as.character(recipe$unit)
+    if (any(colnames(recipe)!=c("amount","unit","ingredient"))&ncol(recipe)!=3){stop("Invalid Data Frame")}
+    else 
+      whereCUP=grep("cup",recipe[,"unit"])
+    whereCUPS=grep("cups",recipe[,"unit"])
+    whereOZ=grep("oz",recipe[,"unit"])
+    recipe[whereCUP, "unit"] = "ml"
+    recipe[whereCUPS,"unit"]="ml"
+    recipe[whereOZ,"unit"]="gr"
+    recipe[whereCUP,"amount"]=round(recipe[whereCUP,"amount"]*236.6/5)*5
+    recipe[whereCUPS,"amount"]=round(recipe[whereCUPS,"amount"]*236.6/5)*5
+    recipe[whereOZ,"amount"]=round(recipe[whereOZ,"amount"]*28.3/5)*5
+    
+    recipe.metric=recipe
+    return(recipe.metric)
+    
+  }
 
 #### Function #4a
 # Implement the function "bootstrapVarEst"
@@ -89,9 +107,19 @@ recipeConversion <- function(recipe){
 # -- Calculate, and store, the mean of this bootstrap sample, call that mu_i (i in 1:B)
 # -- The bootstrap variance is the sample variance of mu_1, mu_2, ..., mu_B
 
-bootstrapVarEst <- function(x, B){
 
-}
+  bootstrapVarEst=function(x,B) {
+    v_means=c(1:B)
+    for (i in 1:B) 
+      v_means[i]=mean(sample(x,length(x),replace=TRUE))
+    
+    boot.sigma2.est=var(v_means)
+    
+    return(boot.sigma2.est)
+  }
+  
+  
+
 
 #### Function #4b
 #### Implement the function "jackknifeVarEst"
@@ -111,9 +139,19 @@ bootstrapVarEst <- function(x, B){
 #     for this reduced sample calculate the sample mean (get mu_1, mu_2, ..., mu_n)
 # -- The jackknife variance is the sample variance of mu_1, mu_2, ..., mu_n
 
-jackknifeVarEst <- fuction(x){
 
-}
+  jacknifeVarEst <- function(x){
+    jacknife.means=vector(mode="numeric")
+    
+    for (i in 1:length(x))
+    {jacknife.samples=x[-i]
+     jacknife.means=c(jacknife.means,mean(jacknife.samples))}
+    
+    jack.sigma2.est=var(jacknife.means)
+    
+    return(jack.sigma2.est) 
+  }
+
 
 #### Function #4c
 #### Implement the function "samplingVarEst"
@@ -127,8 +165,14 @@ jackknifeVarEst <- fuction(x){
 
 # Note: this function calls the previous two functions.
 
-samplingVarEst <- function(  ){
-
+samplingVarEst <- function(x,type="bootstrap",B){
+  if (type!="jacknife"& type!="bootstrap"){stop("Invalid Instruction")}
+  else if (type=="bootstrap"){
+    sampling.sigma.est= bootstrapVarEst(x,B)
+  }
+  else
+  {sampling.sigma.est=jacknifeVarEst(x)}
+  return(sampling.sigma.est)
 }
 
 
