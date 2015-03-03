@@ -1,0 +1,23 @@
+{
+    "email": "cramosv@berkeley.edu", 
+    "github_name": "cramosv", 
+    "grades": {
+        "hw1": {
+            "note": "", 
+            "hash": "2ae40df81b228ae214c093d12fcb240973071e47", 
+            "earned": 18, 
+            "possible": 20, 
+            "penalty": 0, 
+            "parts": {
+                "hw1": {
+                    "possible": 20, 
+                    "earned": 18
+                }
+            }
+        }
+    }, 
+    "login": "cramosv", 
+    "name": "Carlos Ramos de la Vega", 
+    "status": "enrolled", 
+    "url": "git@github.com:cramosv/stat133.git"
+}
