@@ -19,5 +19,6 @@
     "login": "cramosv", 
     "name": "Carlos Ramos de la Vega", 
     "status": "enrolled", 
-    "url": "git@github.com:cramosv/stat133.git"
+    "url": "git@github.com:cramosv/stat133.git", 
+    "section": "lab2"
 }
