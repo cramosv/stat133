@@ -46,12 +46,13 @@ initial.doctors=sample((0:1),size=100,replace=TRUE,prob=c(.9,.1))
     return(has_adopted)
   }
 
-  a=colSums(sim.doctors(initial.doctors,100,100,.3))
+a=colSums(sim.doctors(initial.doctors,100,100,.3))
 b=colSums(sim.doctors(initial.doctors,100,100,.5))
 c=colSums(sim.doctors(initial.doctors,100,100,.7))
 d=colSums(sim.doctors(initial.doctors,100,100,.8))
 e=colSums(sim.doctors(initial.doctors,100,100,.999))
 sumary=data.frame(cbind(1:length(initial.doctors),a,b,c,d,e))
+colnames(sumary)= c("day","p=.3","p=.5","p=.7","p=.8","p=.999")
 xticks=c(1:100)
 yticks=c(1:(max(sumary[,-1])+10))
 
@@ -61,7 +62,8 @@ lines(x=sumary[,1],y=b, col="blue")
 lines(x=sumary[,1],y=c, col="green")
 lines(x=sumary[,1],y=d, col="orange")
 lines(x=sumary[,1],y=e, col="black")
-#HOW TO ADJUST LEGEND!legend("topleft",legend=names(sumary[,-1]), col="red", fill=T, xpd=F)
+legend("topleft",legend=names(sumary[,-1]), fill=c("red","blue","green","orange","black"), cex=.3, text.width=4)
+
 
 # When you test your function you have to generate <initial.doctors> and
 # pick values for the other input parameters.
