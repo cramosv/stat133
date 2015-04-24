@@ -11,38 +11,63 @@ getData = function(coefs = c(0, 1, 1), xs = 1:5, dupl = 10,
   return(data.frame(x, y))
 }
 
-### 
-genBootY = function(x, y, rep = TRUE){
-  ### For each unique x value, take a sample of the
-  ### corresponding y values, with replacement.
-  ### Return a vector of random y values the same length as y
-  ### You can assume that the xs are sorted
-  ### Hint use tapply here!
-  
 
+genBootY = function(x, y, rep = TRUE){
+# ux=unique(x)
+# yvals=list()
+# for (i in 1:length(unique(x))){
+#   index=grep(ux[i],x)
+#   sampley=y[index]
+#   a=length(index)
+#   yvals[[i]]=sample(x=sampley,size=a,rep=TRUE)
+# }
+# return(unlist(yvals))
+# }
+little.sample=tapply(y,x,function(hola) sample(hola,length(hola),replace=rep))
+hola=unlist(little.sample,use.names=FALSE)
 }
 
+
+
 genBootR = function(fit, err, rep = TRUE){
+  fit.with.errors=c(rep(0,length(fit)))
+  sample.errors=sample(err,length(err),rep=rep)
+  for (i in 1:length(fit)){
+  fit.with.errors[i]=fit[i]+sample.errors[i]
+  }
+  return(fit.with.errors)
   ### Sample the errors 
   ### Add the errors to the fit to create a y vector
   ### Return a vector of y values the same length as fit
   ### HINT: It can be easier to sample the indices than the values
-  
- 
 }
+
+
+
 
 fitModel = function(x, y, degree = 1){
-  ### use the lm function to fit a line of a quadratic 
-  ### e.g. y ~ x or y ~ x + I(x^2)
-  ### y and x are numeric vectors of the same length
-  ### Return the coefficients as a vector 
-  ### HINT: Take a look at the repBoot function to see how to use lm()
-  
- 
+  if(degree==1){
+    hola=lm(y~x)
+    coeff=hola$coefficients
+  }
+  if(degree==2){
+    coeff=lm(y~x+I(x^2))$coefficients
+  }
   return(coeff)
 }
+  
+  
+
+
 
 oneBoot = function(data, fit = NULL, degree = 1){
+  if(is.null(fit)){
+    ynew=genBootY(data[,1],data[,2])
+  }else{ynew=genBootR(fit[,1],fit[,2])}
+  fitModel(data[,1],y=ynew,degree)
+}
+
+
   ###  data are either your data (from call to getData)
   ###  OR fit and errors from fit of line to data
   ###  OR fit and errors from fit of quadratic to data  
@@ -50,11 +75,63 @@ oneBoot = function(data, fit = NULL, degree = 1){
  
   ### Use fitModel to fit a model to this bootstrap Y 
  
+
+
+#repBoot = function(data, B = 1000){
+#   empty.list=list(rep(0,1000),rep(0,1000),rep(0,1000),rep(0,1000))
+#   for (i in 1:B){
+#     empty.list[[i]]=oneBoot(data)
+#   }
+# return(empty.list)
+#}
+
+
+#repBoot=function(data,B=1000){
+  #lista=list()
+  #y.values.Y.1=genBootY(data[,1],data[,2])
+ # fit.model.Y.1=fitModel(data[,1],y.valuesY.1, degree=1)
+  
+#   y.values.R.1=genBootR(data[,1],data[,2])
+#   fit.model.R.1=fitModel(data[,1],y.valuesR.1, degree=1)
+#   
+#   y.values.Y.2=genBootY(data[,1],data[,2])
+#   fit.model.Y.2=fitModel(data[,1],y.valuesY.2, degree=2)
+#   
+#   y.values.R.2=genBootR(data[,1],data[,2])
+#   fit.model.R.2=fitModel(data[,1],y.valuesR.2, degree=2)
+  
+#}
+
+
+repBoot=function(data,B=1000){
+  lista=list()
+  matriz.1=matrix(0,ncol=2,nrow=B)
+  matriz.2=matrix(0,ncol=3,nrow=B)
+  matriz.3=matrix(0,ncol=2,nrow=B)
+  matriz.4=matrix(0,ncol=3,nrow=B)
+  
+  
+  mfit.1=lm(data[,2]~data[,1])
+  
+  fit.1=cbind(mfit.1$fitted,mfit.1$residual)
+  for (i in 1:B){
+  matriz.1[i,]=matrix(oneBoot(data,fit=NULL,degree=1))
+  matriz.2[i,]=matrix(oneBoot(data,fit=NULL,degree=2))
+  matriz.3[i,]=matrix(oneBoot(data,fit=fit.1,degree=1))
+  matriz.4[i,]=matrix(oneBoot(data,fit=fit.1,degree=2))
+}
+return(list(matriz.1,matriz.2,matriz.3,matriz.4))
 }
 
-repBoot = function(data, B = 1000){
-  
-  ### Set up the inputs you need for oneBoot, i.e.,
+
+
+
+
+#Poner atention a esto!!
+  #you need four cases: genBootR (residual) with degree 1, genBootR (residual) with degree 2, genBotY (cases) with degree 1, genBootY (cases) with degree 2
+#mfit.1=lm(data$y~data$x)
+#fit.1=cbind(mfit.1$fitted,mfit.1$residual)
+### Set up the inputs you need for oneBoot, i.e.,
   ### create errors and fits for line and quadratic
 
   ### replicate a call to oneBoot B times
@@ -68,7 +145,6 @@ repBoot = function(data, B = 1000){
   ### Replicate a call to oneBoot B times for 
   ### each of the four conditions
   
-  
   ### Format the return value so that you have a list of
   ### length 4, one for each set of coefficients
   ### each element will contain a matrix with B columns
@@ -76,15 +152,26 @@ repBoot = function(data, B = 1000){
   ### fit is for a line or a quadratic
   ### Return this list
   
-  return(coeff)
-} 
+ 
 
 bootPlot = function(x, y, coeff, trueCoeff){
   ### x and y are the original data
   ### coeff is a matrix from repBoot
   ### trueCoeff contains the true coefficients 
   ### that generated the data
-  
+  plot(x,y)
+  hello=nrow(coeff)
+  if(ncol(coeff)==2){
+    for (i in 1:hello){
+      abline(a=coeff[i,1],b=coeff[i,2],col="#0000001A")
+      
+  }}else{
+    for (i in 1:hello){
+      curve(coeff[i,1]+coeff[i,2]*x+coeff[i,3]*x^2,add=TRUE,col="#0000001A")
+    }
+  }
+curve(trueCoeff[1]+trueCoeff[2]*x+trueCoeff[3]*x^2,add=TRUE, col="red")
+}
   ### Make a scatter plot of data
 
   ### Add lines or curves for each row in coeff
@@ -97,7 +184,7 @@ bootPlot = function(x, y, coeff, trueCoeff){
   ### Use trueCoeff to add true line/curve - 
   ###  Make the true line/curve stand out
 
-}
+
 
 ### Run your simulation by calling this function
 ### This function doesn't need any changing
