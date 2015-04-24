@@ -109,16 +109,17 @@ repBoot=function(data,B=1000){
   matriz.2=matrix(0,ncol=3,nrow=B)
   matriz.3=matrix(0,ncol=2,nrow=B)
   matriz.4=matrix(0,ncol=3,nrow=B)
-  
+
   
   mfit.1=lm(data[,2]~data[,1])
-  
-  fit.1=cbind(mfit.1$fitted,mfit.1$residual)
+  mfit.2=lm(data[,2]~data[,1]+I(data[,1]^2))
+  fit.1=cbind(mfit.1$fitted,mfit.1$residuals)
+  fit.2=cbind(mfit.2$fitted,mfit.2$residuals)
   for (i in 1:B){
   matriz.1[i,]=matrix(oneBoot(data,fit=NULL,degree=1))
   matriz.2[i,]=matrix(oneBoot(data,fit=NULL,degree=2))
   matriz.3[i,]=matrix(oneBoot(data,fit=fit.1,degree=1))
-  matriz.4[i,]=matrix(oneBoot(data,fit=fit.1,degree=2))
+  matriz.4[i,]=matrix(oneBoot(data,fit=fit.2,degree=2))
 }
 return(list(matriz.1,matriz.2,matriz.3,matriz.4))
 }
