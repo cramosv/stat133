@@ -14,6 +14,19 @@
                     "earned": 18
                 }
             }
+        }, 
+        "hw4": {
+            "note": "", 
+            "hash": "40dfd5565f17df81f446ccf8c0d2cbc6da288d69", 
+            "earned": 11, 
+            "possible": 20, 
+            "penalty": 0, 
+            "parts": {
+                "hw4": {
+                    "possible": 20, 
+                    "earned": 11
+                }
+            }
         }
     }, 
     "login": "cramosv", 
