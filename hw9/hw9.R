@@ -58,7 +58,7 @@ bub <- gvisBubbleChart(data=mtcars,idvar="model",xvar="disp", yvar="mpg",sizevar
 # the chart will show up in a new tab in your web browser.
 
 # < your code here>
-
+# Did not plot the bub -- Andy
 ##### Motion Chart
 # For examples of motion chart, see: 
 # https://developers.google.com/chart/interactive/docs/gallery/motionchart
