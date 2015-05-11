@@ -1,0 +1,72 @@
+PLOT
+plot(x=wr1500m$new_year,y=wr1500m$times_sec,type="s", xlim=c(1892,2014), xaxt="n")
+axis(side=1, at=seq(from=1892, to=2014, by=5))
+lines(x=c(wr1500m$new_year[51],2014),y=rep(wr_1998,2))
+
+SYMBOLS
+symbols(log(SO2012Ctry.winners$GDP_per_person),log(SO2012Ctry.winners$pop),circles=sqrt(SO2012Ctry.winners$Total), inches=.3, pch=".", ylab="", xlab="")
+par(new=TRUE)
+symbols(log(SO2012Ctry.loosers$GDP_per_person),log(SO2012Ctry.loosers$pop),circles=sqrt(SO2012Ctry.loosers$Total),inches=.3,pch=".",xlab="GDP per person",ylab="Population",xaxt="n",yaxt="n")
+
+BARPLOT( primero tienes que hacer tabla!)
+athTab=table(athletes$Sex,athletes$Sport)
+barplot(athTab, beside=FALSE)
+barplot(athTab, beside=TRUE)
+
+APPLY STATEMENTS
+Remember: if you have a data frame, you can use apply and set if you want a function to be performed in the rows (1), or in the columns (2), with those numbers. 
+
+if lapply would have returned a list with elements $a and $b, sapply will return either a vector, with elements [[‘a’]] and [[‘b’]], or a matrix with column names “a” and “b”
+
+mapply applies FUN to the first elements of each (…) argument, the second elements, the third elements, and so on.” LO HACE AL INDEXAR Y HACER LA OPERATION CON LOS ELEMENTS DE CADA UNA DE LAS ENTRADAS DE LA LISTA EN CONJUNTO! TODOS LOS DOS JUNTOS, TODOS LOS TRES JUNTOS, ETC. 
+
+SIMULATIONS WITH FUNCTIONS
+****SAMPLE!!*** initial.doctors=sample((0:1),size=100,replace=TRUE,prob=c(.9,.1))
+
+samplingVarEst <- function(x,type="bootstrap",B){
+  if (type!="jacknife"& type!="bootstrap"){stop("Invalid Instruction")}
+  else if (type=="bootstrap"){
+    sampling.sigma.est= bootstrapVarEst(x,B)
+  }
+  else
+  {sampling.sigma.est=jacknifeVarEst(x)}
+  return(sampling.sigma.est)
+}
+
+
+BOOTSTRAPPING
+genBootR = function(fit, err, rep = TRUE){
+  fit.with.errors=c(rep(0,length(fit)))
+  sample.errors=sample(err,length(err),rep=rep)
+  for (i in 1:length(fit)){
+  fit.with.errors[i]=fit[i]+sample.errors[i]
+  }
+  return(fit.with.errors)
+}
+
+
+
+REGULAR EXPRESSIONS
+See given List
+Tener en mente: grep, gsub, sub, unlist, strsplit, substring, tolower,toupper
+
+Remember: \ (quitar significado especial)  ^(anchor al inicio de string)  $(referirte a ultima parte de string)
++ 1 o mas ocurrencias
+* 0 o mas ocurrencias
+
+LINEAR REGRESSION
+
+fitModel = function(x, y, degree = 1){
+  if(degree==1){
+    hola=lm(y~x)
+    coeff=hola$coefficients
+  }
+  if(degree==2){
+    coeff=lm(y~x+I(x^2))$coefficients  ##OJOOO: VE COMO SE AGREGO TERMINO PARA 							HACERLO CUADRATICO!!
+  }
+  return(coeff)
+}
+  
+
+
+
