@@ -9,7 +9,7 @@ INFO:root:(1 points) R('all.equal(length(powers.r), length(sol$powers), check.at
 INFO:root:Executed R('recipe.r <- recipeConversion(test$recipe)')
 ERROR:root:Got exception on main handler
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 164, in run
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 164, in run
     exec(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -21,7 +21,7 @@ Traceback (most recent call last):
 RRuntimeError: Error in recipeConversion(test$recipe) : object 'recipe' not found
 
 ERROR:root:Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 164, in run
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 164, in run
     exec(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -33,7 +33,7 @@ ERROR:root:Traceback (most recent call last):
 RRuntimeError: Error in recipeConversion(test$recipe) : object 'recipe' not found
 
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 164, in run
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 164, in run
     exec(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -44,12 +44,12 @@ Traceback (most recent call last):
     res = super(Function, self).__call__(*new_args, **new_kwargs)
 RRuntimeError: Error in recipeConversion(test$recipe) : object 'recipe' not found
 
-ERROR:root:(3 points) Checking R('all.equal(recipe.r, sol$recipe, check.attributes=F, tolerance=1e-1)')[0]
+ERROR:root:(3 points) Checking R('all.equal(recipe.r, sol$recipe, check.attributes=F, tolerance=1e1)')[0]
 ERROR:root:... Expecting: True
 ERROR:root:... But got:   Traceback error
 ERROR:root:Got exception:
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 180, in check
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 180, in check
     result = eval(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -58,11 +58,11 @@ Traceback (most recent call last):
     return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
   File "/Library/Python/2.7/site-packages/rpy2/robjects/functions.py", line 100, in __call__
     res = super(Function, self).__call__(*new_args, **new_kwargs)
-RRuntimeError: Error in all.equal(recipe.r, sol$recipe, check.attributes = F, tolerance = 0.1) : 
+RRuntimeError: Error in all.equal(recipe.r, sol$recipe, check.attributes = F, tolerance = 10) : 
   object 'recipe.r' not found
 
 ERROR:root:Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 180, in check
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 180, in check
     result = eval(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -71,11 +71,11 @@ ERROR:root:Traceback (most recent call last):
     return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
   File "/Library/Python/2.7/site-packages/rpy2/robjects/functions.py", line 100, in __call__
     res = super(Function, self).__call__(*new_args, **new_kwargs)
-RRuntimeError: Error in all.equal(recipe.r, sol$recipe, check.attributes = F, tolerance = 0.1) : 
+RRuntimeError: Error in all.equal(recipe.r, sol$recipe, check.attributes = F, tolerance = 10) : 
   object 'recipe.r' not found
 
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 180, in check
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 180, in check
     result = eval(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -84,7 +84,7 @@ Traceback (most recent call last):
     return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
   File "/Library/Python/2.7/site-packages/rpy2/robjects/functions.py", line 100, in __call__
     res = super(Function, self).__call__(*new_args, **new_kwargs)
-RRuntimeError: Error in all.equal(recipe.r, sol$recipe, check.attributes = F, tolerance = 0.1) : 
+RRuntimeError: Error in all.equal(recipe.r, sol$recipe, check.attributes = F, tolerance = 10) : 
   object 'recipe.r' not found
 
 INFO:root:Executed R('bootstrapVarEst.r <- bootstrapVarEst(test$bootstrapVarEst.x, test$bootstrapVarEst.B)')
@@ -92,7 +92,7 @@ INFO:root:(3 points) R('all.equal(bootstrapVarEst.r, sol$bootstrapVarEst, check.
 INFO:root:Executed R('jackknifeVarEst.r <- jackknifeVarEst(test$jackknifeVarEst.x)')
 ERROR:root:Got exception on main handler
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 164, in run
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 164, in run
     exec(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -105,7 +105,7 @@ RRuntimeError: Error in eval(expr, envir, enclos) :
   could not find function "jackknifeVarEst"
 
 ERROR:root:Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 164, in run
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 164, in run
     exec(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -118,7 +118,7 @@ RRuntimeError: Error in eval(expr, envir, enclos) :
   could not find function "jackknifeVarEst"
 
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 164, in run
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 164, in run
     exec(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -130,12 +130,12 @@ Traceback (most recent call last):
 RRuntimeError: Error in eval(expr, envir, enclos) : 
   could not find function "jackknifeVarEst"
 
-ERROR:root:(3 points) Checking R('all.equal(jackknifeVarEst.r, sol$jackknifeVarEst, check.attributes=F, tolerance=1e-1)')[0]
+ERROR:root:(3 points) Checking R('all.equal(jackknifeVarEst.r, sol$jackknifeVarEst, check.attributes=F, tolerance=1)')[0]
 ERROR:root:... Expecting: True
 ERROR:root:... But got:   Traceback error
 ERROR:root:Got exception:
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 180, in check
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 180, in check
     result = eval(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -148,7 +148,7 @@ RRuntimeError: Error in all.equal(jackknifeVarEst.r, sol$jackknifeVarEst, check.
   object 'jackknifeVarEst.r' not found
 
 ERROR:root:Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 180, in check
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 180, in check
     result = eval(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -161,7 +161,7 @@ RRuntimeError: Error in all.equal(jackknifeVarEst.r, sol$jackknifeVarEst, check.
   object 'jackknifeVarEst.r' not found
 
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 180, in check
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 180, in check
     result = eval(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -176,7 +176,7 @@ RRuntimeError: Error in all.equal(jackknifeVarEst.r, sol$jackknifeVarEst, check.
 INFO:root:Executed R('samplingVarEst.r <- samplingVarEst(test$samplingVarEst.x, test$samplingVarEst.type)')
 ERROR:root:Got exception on main handler
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 164, in run
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 164, in run
     exec(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -189,7 +189,7 @@ RRuntimeError: Error in samplingVarEst(test$samplingVarEst.x, test$samplingVarEs
   Invalid Instruction
 
 ERROR:root:Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 164, in run
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 164, in run
     exec(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -202,7 +202,7 @@ RRuntimeError: Error in samplingVarEst(test$samplingVarEst.x, test$samplingVarEs
   Invalid Instruction
 
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 164, in run
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 164, in run
     exec(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -214,12 +214,12 @@ Traceback (most recent call last):
 RRuntimeError: Error in samplingVarEst(test$samplingVarEst.x, test$samplingVarEst.type) : 
   Invalid Instruction
 
-ERROR:root:(3 points) Checking R('all.equal(samplingVarEst.r, sol$samplingVarEst, check.attributes=F, tolerance=1e-1)')[0]
+ERROR:root:(3 points) Checking R('all.equal(samplingVarEst.r, sol$samplingVarEst, check.attributes=F, tolerance=1)')[0]
 ERROR:root:... Expecting: True
 ERROR:root:... But got:   Traceback error
 ERROR:root:Got exception:
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 180, in check
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 180, in check
     result = eval(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -232,7 +232,7 @@ RRuntimeError: Error in all.equal(samplingVarEst.r, sol$samplingVarEst, check.at
   object 'samplingVarEst.r' not found
 
 ERROR:root:Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 180, in check
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 180, in check
     result = eval(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
@@ -245,7 +245,7 @@ RRuntimeError: Error in all.equal(samplingVarEst.r, sol$samplingVarEst, check.at
   object 'samplingVarEst.r' not found
 
 Traceback (most recent call last):
-  File "/Users/andyatcal/Library/Python/2.7/lib/python/site-packages/gradebook/score.py", line 180, in check
+  File "/Library/Python/2.7/site-packages/gradebook/score.py", line 180, in check
     result = eval(command, g)
   File "<string>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/rpy2/robjects/__init__.py", line 269, in __call__
