@@ -129,10 +129,10 @@ lines(x=c(wr1500m$new_year[51],2014),y=rep(wr_1998,2))
 # of wr1500m$athlete to access it.
 
 wr_1944=wr1500m[wr1500m$year==1944,"times_sec"]
-abline(v=exact.time1944,col="grey")
-abline(v=exact.time1998,col="grey")
-text(exact.time1944,wr_1944,labels=wr1500m[wr1500m$new_year==exact.time1944,"athlete"])
-text(exact.time1998,wr_1998,labels=wr1500m[wr1500m$new_year==exact.time1998,"athlete"])
+#abline(v=exact.time1944,col="grey")
+#abline(v=exact.time1998,col="grey")
+#text(exact.time1944,wr_1944,labels=wr1500m[wr1500m$new_year==exact.time1944,"athlete"])
+#text(exact.time1998,wr_1998,labels=wr1500m[wr1500m$new_year==exact.time1998,"athlete"])
 
 # Q5. Now we are ready to add other contextual information.
 # Remake the plot as before but now adding axis labels and a title.
@@ -142,10 +142,10 @@ text(exact.time1998,wr_1998,labels=wr1500m[wr1500m$new_year==exact.time1998,"ath
 plot(x=wr1500m$new_year,y=wr1500m$times_sec,type="s", xlim=c(1892,2014), xaxt="n", xlab="Year", ylab="Time (Sec.)", main="World Records: Male Swimming 1892-2014")
 axis(side=1, at=seq(from=1892, to=2014, by=5))
 lines(x=c(1998:2014),y=rep(wr_1998,17))
-abline(v=exact.time1944,col="grey")
-abline(v=exact.time1998,col="grey")
-text(exact.time1944,wr_1944,labels=wr1500m[wr1500m$new_year==exact.time1944,"athlete"])
-text(exact.time1998,wr_1998,labels=wr1500m[wr1500m$new_year==exact.time1998,"athlete"])
+#abline(v=exact.time1944,col="grey")
+#abline(v=exact.time1998,col="grey")
+#text(exact.time1944,wr_1944,labels=wr1500m[wr1500m$new_year==exact.time1944,"athlete"])
+#text(exact.time1998,wr_1998,labels=wr1500m[wr1500m$new_year==exact.time1998,"athlete"])
 ## You have finised the first plot!!
 
 ################################
@@ -249,7 +249,7 @@ world=map(database="world", col="light grey")
 # the contries longitude, latitude and Total.)
 
 world=map(database="world", col="light grey", resolution="0", fill=TRUE)
-symbols(wonMedal$longitude, wonMedal$latitude,circles=sqrt(wonMedal$Total), add=TRUE, inches=.1)
+# symbols(wonMedal$longitude, wonMedal$latitude,circles=sqrt(wonMedal$Total), add=TRUE, inches=.1)
 
 
 
@@ -274,7 +274,7 @@ brewer.pal(8,"Set2")
 myGold="#E5C494DD"
 
 world=map(database="world", col="light grey", resolution="0", fill=TRUE)
-symbols(wonMedal$longitude, wonMedal$latitude,circles=wonMedal$Total, add=TRUE, inches=.1, bg=myGold)
+#symbols(wonMedal$longitude, wonMedal$latitude,circles=wonMedal$Total, add=TRUE, inches=.1, bg=myGold)
 
 
 ## That was the FINAL version of this plot
