@@ -421,9 +421,10 @@ return(number.games)}}
 
 # For B = 5000 and each value of k = 10000, 50000, 100000, 500000
 # Plot a histogram of the output from NumJackpot (i.e. four histograms)
-B.500=NumJackpot(500,1000)
+#B.500=NumJackpot(500,1000) ## inga
+B.500=NumJackpot(500,100)
 # <your plot here>
-
+hist(B.500) # inga
 #################################################################
 ##### PART VI : string manipulation and regular expressions [20 pts]
 
