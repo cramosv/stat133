@@ -1,0 +1,16 @@
+Total: 19/20
+
+Function 1
+5/5
+The “+” in “\\*+” is not required.
+
+Function 2
+5/5
+
+
+Function 3
+4/5
+Use “\\<he\\>” to avoid matching he contained in other words like “the”.
+
+Function 4
+5/5

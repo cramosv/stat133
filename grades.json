@@ -27,6 +27,53 @@
                     "earned": 11
                 }
             }
+        }, 
+        "hw2": {
+            "note": "", 
+            "hash": "048c2463b4592361dbde6303eb651f48d5b7aecb", 
+            "earned": 26, 
+            "possible": 31, 
+            "penalty": 0, 
+            "parts": {
+                "hw2_fig": {
+                    "possible": 20, 
+                    "earned": 17
+                }, 
+                "hw2": {
+                    "possible": 11, 
+                    "earned": 9
+                }
+            }
+        }, 
+        "midterm4": {
+            "note": "", 
+            "hash": "1aa78a93046bfbb506fb2685c2bdab83cedf57c8", 
+            "earned": 30, 
+            "possible": 27, 
+            "penalty": 0, 
+            "parts": {
+                "midterm4": {
+                    "possible": 30, 
+                    "earned": 30
+                }
+            }
+        }, 
+        "final-feiw50hj": {
+            "note": "", 
+            "hash": "ddb0e66b6799635af541c972ed979762ec8a898c", 
+            "earned": 61, 
+            "possible": 100, 
+            "penalty": 0, 
+            "parts": {
+                "final": {
+                    "possible": 69, 
+                    "earned": 39
+                }, 
+                "final_fig": {
+                    "possible": 31, 
+                    "earned": 22
+                }
+            }
         }
     }, 
     "login": "cramosv", 
