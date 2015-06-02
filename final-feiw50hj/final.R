@@ -269,7 +269,8 @@ prop.rain <- sapply(rain,function(x)sum(x>0))
 # in a separate panel (there will be one empty panel)
 # use an apply statment to the the plotting
 par(mfrow=c(2,3))
-apply(rain,FUN=function(x)hist(x))
+# inga edited, was apply, changed to sapply
+sapply(rain,FUN=function(x)hist(x))
 
 #################################################################
 ##### PART IV : functions [20 pts]
@@ -399,7 +400,7 @@ m=0
 for (i in 1:B){
   winners=sort(sample(c(1:19),3,replace=FALSE))
 players=list()
-
+## inga : you are using i as an index again, inside the other for loop!!!
 for (i in 1:k){
   sampling=sample(c(1:19),3,replace=FALSE)
   
@@ -411,17 +412,21 @@ for (i in 1:k){
       m=m+1 
     }
     else{
+    }
+    number.games[i]=m
   }
-  number.games[i]=m}}
+}
 
-return(number.games)}}
+return(number.games)
+}
+}
 
   
 
 
 # For B = 5000 and each value of k = 10000, 50000, 100000, 500000
 # Plot a histogram of the output from NumJackpot (i.e. four histograms)
-B.500=NumJackpot(500,1000)
+#B.500=NumJackpot(500,1000) ## inga the function causes an error
 # <your plot here>
 
 #################################################################
